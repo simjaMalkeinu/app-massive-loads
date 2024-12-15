@@ -5,15 +5,16 @@ import axios from "axios";
 import { useContext } from "react";
 
 import { AuthContext } from "../context/authContext";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const {login} = useContext(AuthContext);
-  const navigate = useNavigate()
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const register = location.state?.alert;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,14 +35,13 @@ export default function Login() {
             username: data.response.username,
             email: data.response.email,
           };
-  
+
           login(userData);
-  
-          navigate('/Home')
+
+          navigate("/Home");
+        } else {
+          console.log(data);
         }
-
-        
-
       })
       .catch((err) => console.log(err))
       .finally(() => {
@@ -65,7 +65,7 @@ export default function Login() {
         placeItems: "center",
       }}
     >
-      <div className="col-md-4 card p-4 shadow-sm">
+      <div className="col-md-5 card p-4 shadow-sm">
         <img
           src={userIcon}
           className="mx-auto mb-4"
@@ -73,6 +73,18 @@ export default function Login() {
           style={{ maxWidth: "150px" }}
         />
         <h1 className="text-center">Inicio de sesion</h1>
+
+        {register ? (
+          <div className="alert alert-success alert-dismissible" role="alert">
+            <b>Usuario creado con exito</b>
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
+        ) : null}
         <form onSubmit={handleSubmit}>
           <div className="form-floating mb-3">
             <input
@@ -105,6 +117,11 @@ export default function Login() {
               id="btn-submit"
             />
           </div>
+
+          <p className="mt-3 text-center">
+            <span>Aun no tienes una cuenta, </span>
+            <a href="/Register">Registrate aqui...</a>
+          </p>
 
           <div className="mt-3 d-flex justify-content-center align-content-center">
             <div className="spinner-border" role="status" id="loader" hidden>

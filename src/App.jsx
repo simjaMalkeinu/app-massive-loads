@@ -10,7 +10,7 @@ function App() {
       <Routes>
         {/* Ruta pública: Login */}
         <Route path="/" element={<Login />} />
-        <Route path="/" element={<Register />} />
+        <Route path="/Register" element={<Register />} />
 
         {/* Rutas protegidas */}
         {listRoutes.map((routeItem, index) => (
