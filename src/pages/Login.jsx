@@ -6,6 +6,7 @@ import { useContext } from "react";
 
 import { AuthContext } from "../context/authContext";
 import { useNavigate, useLocation } from "react-router-dom";
+import Loader from "../components/Loader";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -34,6 +35,7 @@ export default function Login() {
             token: data.response.token,
             username: data.response.username,
             email: data.response.email,
+            roles: data.response.roles
           };
 
           login(userData);
@@ -123,11 +125,7 @@ export default function Login() {
             <a href="/Register">Registrate aqui...</a>
           </p>
 
-          <div className="mt-3 d-flex justify-content-center align-content-center">
-            <div className="spinner-border" role="status" id="loader" hidden>
-              <span className="visually-hidden">Loading...</span>
-            </div>
-          </div>
+          <Loader  />
         </form>
       </div>
     </div>

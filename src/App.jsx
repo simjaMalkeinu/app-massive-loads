@@ -3,6 +3,7 @@ import listRoutes from "./routes/listRoutes";
 import PrivateRoute from "./routes/privateRoutes";
 import Login from "./pages/login";
 import Register from "./pages/Register";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
             }
           />
         ))}
+
+<Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );

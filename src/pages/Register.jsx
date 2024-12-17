@@ -2,6 +2,7 @@ import { useState } from "react";
 import userIcon from "/avatar.svg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Loader from "../components/Loader";
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -143,11 +144,7 @@ export default function Register() {
             <a href="/">Inicia sesion aqui.</a>
           </p>
 
-          <div className="mt-3 d-flex justify-content-center align-content-center">
-            <div className="spinner-border" role="status" id="loader" hidden>
-              <span className="visually-hidden">Loading...</span>
-            </div>
-          </div>
+          <Loader />
         </form>
       </div>
     </div>
