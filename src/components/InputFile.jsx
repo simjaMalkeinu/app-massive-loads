@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import * as XLSX from "xlsx";
 
 export default function InputFile(props) {
@@ -138,4 +139,10 @@ export default function InputFile(props) {
       </label>
     </div>
   );
+}
+
+InputFile.propTypes = {
+  setFileData: PropTypes.func,
+  setIsLoading: PropTypes.func,
+  fileData: PropTypes.object
 }

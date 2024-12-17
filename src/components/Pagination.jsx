@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function Pagination(props) {
   const { getData, links } = props;
 
@@ -37,4 +39,9 @@ export default function Pagination(props) {
       </ul>
     </nav>
   );
+}
+
+Pagination.propTypes = {
+  getData: PropTypes.func,
+  links: PropTypes.array
 }

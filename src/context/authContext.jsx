@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { createContext, useState } from 'react';
 
 // Crear el contexto
@@ -29,3 +30,7 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
+AuthProvider.propTypes = {
+  children: PropTypes.object
+}

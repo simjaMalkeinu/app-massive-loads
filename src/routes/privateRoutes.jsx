@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
+import PropTypes from 'prop-types';
 
 const PrivateRoute = ({ children }) => {
   const { authData } = useContext(AuthContext); // Obtener datos de autenticación del contexto
@@ -13,5 +14,9 @@ const PrivateRoute = ({ children }) => {
   // Si está autenticado, renderiza el contenido
   return children;
 };
+
+PrivateRoute.propTypes ={
+  children: PropTypes.object
+}
 
 export default PrivateRoute;

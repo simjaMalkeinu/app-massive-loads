@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function Loader(props) {
   const { activate } = props;
   return (
@@ -12,4 +14,8 @@ export default function Loader(props) {
       </div>
     </div>
   );
+}
+
+Loader.propTypes = {
+  activate: PropTypes.bool
 }

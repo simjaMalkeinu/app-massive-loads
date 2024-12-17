@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function ExcelPreview(props) {
   const { uploadFile, isUploading, fileData } = props;
   return (
@@ -60,4 +62,10 @@ export default function ExcelPreview(props) {
       </div>
     </>
   );
+}
+
+ExcelPreview.propTypes = {
+  uploadFile: PropTypes.func,
+  isUploading: PropTypes.bool,
+  fileData: PropTypes.object
 }

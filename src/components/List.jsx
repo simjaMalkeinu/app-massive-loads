@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function List(props) {
   const { lista, color } = props;
   return lista.map((item, key) => {
@@ -7,4 +9,9 @@ export default function List(props) {
       </span>
     );
   });
+}
+
+List.propType = {
+  lista: PropTypes.array,
+  color: PropTypes.string
 }

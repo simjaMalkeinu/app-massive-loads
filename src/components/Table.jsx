@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import List from "./List";
 import Pagination from "./Pagination";
 
@@ -54,4 +55,9 @@ export default function Table(props) {
       <Pagination getData={getData} links={links} />
     </>
   );
+}
+
+Table.propTypes = {
+  information : PropTypes.object,
+  getData: PropTypes.func
 }
