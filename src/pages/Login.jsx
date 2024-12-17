@@ -15,7 +15,6 @@ export default function Login() {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  const register = location.state?.alert;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,14 +34,19 @@ export default function Login() {
             token: data.response.token,
             username: data.response.username,
             email: data.response.email,
-            roles: data.response.roles
+            roles: data.response.roles,
           };
 
           login(userData);
 
           navigate("/Home");
-        } else {
-          console.log(data);
+        } else if (data.status === 400) {
+          document.getElementById('alert').innerHTML = 
+            `<div class="alert alert-danger alert-dismissible" role="alert">` +
+            `   <div>${data.message}</div>` +
+            '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+            '</div>'
+          
         }
       })
       .catch((err) => console.log(err))
@@ -51,6 +55,8 @@ export default function Login() {
         document.getElementById("btn-submit").disabled = false;
       });
   };
+
+  const [register, setRegister] = useState(location.state?.register || null);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -80,13 +86,19 @@ export default function Login() {
           <div className="alert alert-success alert-dismissible" role="alert">
             <b>Usuario creado con exito</b>
             <button
+              onClick={() => {
+                setRegister(null);
+                navigate(location.pathname, { replace: true, state: {} });
+              }}
               type="button"
               className="btn-close"
-              data-bs-dismiss="alert"
+              // data-bs-dismiss="alert"
               aria-label="Close"
             ></button>
           </div>
         ) : null}
+
+        <div id="alert"></div>
         <form onSubmit={handleSubmit}>
           <div className="form-floating mb-3">
             <input
@@ -125,7 +137,7 @@ export default function Login() {
             <a href="/Register">Registrate aqui...</a>
           </p>
 
-          <Loader  />
+          <Loader />
         </form>
       </div>
     </div>
