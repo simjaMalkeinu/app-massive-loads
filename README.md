@@ -36,13 +36,13 @@ Sigue estos pasos para configurar el proyecto en tu máquina local:
 1. Clona el repositorio:
 
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
+   git clone "https://github.com/simjaMalkeinu/app-massive-loads.git"
    ```
 
 2. Entra en el directorio del proyecto:
 
    ```bash
-   cd <NOMBRE_DEL_DIRECTORIO>
+   cd "app-massive-loads"
    ```
 
 3. Instala las dependencias:
