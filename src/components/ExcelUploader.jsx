@@ -37,7 +37,7 @@ export default function ExcelUploader() {
       .then((response) => response.data)
       .then((data) => {
         setIsUploading(false);
-        console.log(data)
+        console.log(data);
 
         if (data.status === 200) {
           setFileData({
@@ -55,7 +55,7 @@ export default function ExcelUploader() {
         }
       })
       .catch((err) => {
-        console.log("Error: " , err.message);
+        console.log("Error: ", err.message);
         setIsUploading(false);
       });
   };
